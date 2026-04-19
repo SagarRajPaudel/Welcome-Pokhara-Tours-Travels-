@@ -87,10 +87,11 @@ export default function Home() {
   };
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden bg-mountain-gradient">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4">
-        <div className="container mx-auto">
+      <section className="pt-32 pb-16 px-4 relative">
+        <div className="absolute inset-0 bg-topographic opacity-[0.03] pointer-events-none"></div>
+        <div className="container mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -177,8 +178,9 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-24 bg-white/50 backdrop-blur-sm relative">
+        <div className="absolute inset-0 bg-topographic opacity-[0.02] pointer-events-none"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -311,8 +313,11 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-primary text-white">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-24 bg-primary text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none"></div>
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-black/20 rounded-full blur-3xl"></div>
+        <div className="container mx-auto px-4 text-center relative z-10">
           <motion.h2 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}

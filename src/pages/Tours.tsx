@@ -144,8 +144,9 @@ export default function Tours() {
   };
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-background">
-      <div className="container mx-auto px-4">
+    <div className="pt-32 pb-24 min-h-screen bg-mountain-gradient relative overflow-hidden">
+      <div className="absolute inset-0 bg-topographic opacity-[0.03] pointer-events-none"></div>
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -160,7 +161,7 @@ export default function Tours() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-between bg-white p-6 rounded-3xl shadow-sm"
+          className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-between bg-white/70 backdrop-blur-md p-6 rounded-3xl shadow-sm border border-primary/5"
         >
           <div className="relative w-full md:w-96">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />

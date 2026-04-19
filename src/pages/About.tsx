@@ -27,8 +27,9 @@ export default function About() {
   };
 
   return (
-    <div className="pt-32 pb-24 bg-background">
-      <div className="container mx-auto px-4">
+    <div className="pt-32 pb-24 bg-mountain-gradient relative overflow-hidden">
+      <div className="absolute inset-0 bg-topographic opacity-[0.03] pointer-events-none"></div>
+      <div className="container mx-auto px-4 relative z-10">
         {/* Story Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <motion.div
@@ -119,7 +120,7 @@ export default function About() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
-          className="bg-white rounded-[3rem] p-12 md:p-20 shadow-sm border border-primary/5"
+          className="bg-white/70 backdrop-blur-md rounded-[3rem] p-12 md:p-20 shadow-sm border border-primary/5"
         >
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold mb-4">Our Core Values</motion.h2>

@@ -35,8 +35,9 @@ export default function Contact() {
   };
 
   return (
-    <div className="pt-32 pb-24 bg-background">
-      <div className="container mx-auto px-4">
+    <div className="pt-32 pb-24 bg-mountain-gradient relative overflow-hidden">
+      <div className="absolute inset-0 bg-topographic opacity-[0.03] pointer-events-none"></div>
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -52,7 +53,7 @@ export default function Contact() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-white p-8 rounded-3xl shadow-sm border border-primary/5"
+              className="bg-white/80 backdrop-blur-md p-8 rounded-3xl shadow-sm border border-primary/5"
             >
               <motion.img 
                 initial={{ opacity: 0, scale: 0.8 }}

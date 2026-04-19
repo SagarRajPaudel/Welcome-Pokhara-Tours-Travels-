@@ -43,6 +43,38 @@
   }
 }
 
+:root {
+  --bg-topographic: url("https://www.transparenttextures.com/patterns/topography.png");
+  --bg-noise: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+}
+
+.bg-topographic {
+  background-image: var(--bg-topographic);
+  background-repeat: repeat;
+}
+
+.bg-noise {
+  background-image: var(--bg-noise);
+  background-repeat: repeat;
+}
+
+.bg-mountain-gradient {
+  background: linear-gradient(to bottom, #FDF6EC, #FFFBF5, #FDF6EC);
+  position: relative;
+}
+
+.bg-mountain-gradient::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% -20%, rgba(192, 123, 82, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 100% 100%, rgba(192, 123, 82, 0.03) 0%, transparent 40%);
+  pointer-events: none;
+}
+
 .border-glow {
   border: 2px solid transparent;
   animation: border-glow 3s infinite ease-in-out;
