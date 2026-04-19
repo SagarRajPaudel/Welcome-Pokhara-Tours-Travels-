@@ -54,7 +54,7 @@ async function startServer() {
       description: 'Soar like a bird over Pokhara and Phewa Lake. Enjoy breathtaking views of the Annapurna range and Machhapuchhre while gliding through the Himalayan skies.',
       duration: '30-45 Mins',
       category: 'Adventure',
-      images: ['https://images.unsplash.com/photo-1694811401930-8c827ce2342c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHBhcmFnbGlkaW5nfGVufDB8fDB8fHww'],
+      images: ['https://plus.unsplash.com/premium_photo-1663054309676-bb9d31c56f72?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGFyYWdsaWRpbmd8ZW58MHx8MHx8fDA%3D'],
       visible: true,
       featured: true,
       price: 80

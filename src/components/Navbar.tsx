@@ -4,9 +4,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-// We'll use the relative path to the public folder
-const LOGO_PATH = '/logo.png';
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -34,19 +31,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3">
-          <img 
-            src={LOGO_PATH} 
-            alt="Welcome Pokhara Logo" 
-            className="h-12 w-auto object-contain"
-            referrerPolicy="no-referrer"
-            onError={(e) => {
-              // If the image fails to load, we'll show the text fallback
-              e.currentTarget.style.display = 'none';
-              const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-              if (fallback) fallback.style.display = 'flex';
-            }}
-          />
-          <div className="hidden flex-col" style={{ display: 'none' }}>
+          <div className="flex flex-col">
             <span className="font-extrabold text-xl tracking-tight leading-none text-[#8E5431]">Welcome Pokhara</span>
           </div>
         </Link>

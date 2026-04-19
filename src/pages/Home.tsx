@@ -6,7 +6,6 @@ import TourCard from '@/components/TourCard';
 import { Link } from 'react-router-dom';
 
 const WHATSAPP_NUMBER = '+9779856032330';
-const LOGO_PATH = '/logo.png';
 
 export default function Home() {
   const [featuredTours, setFeaturedTours] = useState<any[]>([]);
@@ -34,7 +33,7 @@ export default function Home() {
       description: 'Experience the thrill of white water rafting on the Trisuli River. Perfect for beginners and experienced rafters alike, with exciting rapids and beautiful scenery.',
       duration: '1 Day',
       category: 'Adventure',
-      images: ['https://images.unsplash.com/photo-1629248457649-b082812aea6c?q=80&w=1170&auto=format&fit=crop']
+      images: ['https://images.unsplash.com/photo-1629248564797-8c5ba85da9d3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D']
     }
   ];
 
@@ -103,19 +102,10 @@ export default function Home() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-primary font-bold tracking-[0.2em] uppercase text-base mb-4"
+                className="text-primary font-bold tracking-[0.2em] uppercase text-base mb-8"
               >
                 Welcome Pokhara Tours & Travels
               </motion.p>
-              <motion.img 
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
-                src={LOGO_PATH} 
-                alt="Welcome Pokhara Logo" 
-                className="h-32 w-auto object-contain mb-8"
-                referrerPolicy="no-referrer"
-              />
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

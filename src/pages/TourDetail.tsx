@@ -20,7 +20,7 @@ export default function TourDetail() {
       description: 'Experience the thrill of white water rafting on the Trisuli River. Perfect for beginners and experienced rafters alike, with exciting rapids and beautiful scenery.',
       duration: '1 Day',
       category: 'Adventure',
-      images: ['https://images.unsplash.com/photo-1596438459194-f275f413d6ff?q=80&w=1000&auto=format&fit=crop']
+      images: ['https://images.unsplash.com/photo-1629248564797-8c5ba85da9d3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D']
     },
     {
       _id: 'f2',
@@ -28,7 +28,7 @@ export default function TourDetail() {
       description: 'Soar like a bird over Pokhara and Phewa Lake. Enjoy breathtaking views of the Annapurna range and Machhapuchhre while gliding through the Himalayan skies.',
       duration: '30-45 Mins',
       category: 'Adventure',
-      images: ['https://images.unsplash.com/photo-1596438459194-f275f413d6ff?q=80&w=1000&auto=format&fit=crop']
+      images: ['https://plus.unsplash.com/premium_photo-1663054309676-bb9d31c56f72?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGFyYWdsaWRpbmd8ZW58MHx8MHx8fDA%3D']
     },
     {
       _id: 'f3',

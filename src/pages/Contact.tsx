@@ -5,7 +5,6 @@ import InquiryForm from '@/components/InquiryForm';
 import { Button } from '@/components/ui/button';
 
 const WHATSAPP_NUMBER = '+9779856032330';
-const LOGO_PATH = '/logo.png';
 
 export default function Contact() {
   const handleWhatsApp = () => {
@@ -55,15 +54,6 @@ export default function Contact() {
               animate={{ opacity: 1, x: 0 }}
               className="bg-white/80 backdrop-blur-md p-8 rounded-3xl shadow-sm border border-primary/5"
             >
-              <motion.img 
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                src={LOGO_PATH} 
-                alt="Welcome Pokhara Logo" 
-                className="h-12 w-auto object-contain mb-6"
-                referrerPolicy="no-referrer"
-              />
               <h3 className="text-xl font-bold mb-8">Contact Information</h3>
               <motion.div 
                 initial="hidden"

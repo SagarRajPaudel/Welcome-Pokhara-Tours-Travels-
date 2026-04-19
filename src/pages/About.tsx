@@ -2,8 +2,6 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { MapPin, Compass, Users, Award } from 'lucide-react';
 
-const LOGO_PATH = '/logo.png';
-
 export default function About() {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -39,15 +37,6 @@ export default function About() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <div className="mb-8">
-              <motion.img 
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                src={LOGO_PATH} 
-                alt="Welcome Pokhara Logo" 
-                className="h-20 w-auto object-contain mb-6"
-                referrerPolicy="no-referrer"
-              />
               <Badge className="bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-bold border-none">
                 Our Story
               </Badge>

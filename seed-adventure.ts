@@ -11,7 +11,7 @@ const adventureTours = [
     category: 'Adventure',
     featured: true,
     visible: true,
-    images: ['https://images.unsplash.com/photo-1530866495547-08497ff13ee2?q=80&w=1000&auto=format&fit=crop']
+    images: ['https://images.unsplash.com/photo-1629248564797-8c5ba85da9d3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D']
   },
   {
     title: 'Sarankot Paragliding',
@@ -21,7 +21,7 @@ const adventureTours = [
     category: 'Adventure',
     featured: true,
     visible: true,
-    images: ['https://images.unsplash.com/photo-1596438459194-f275f413d6ff?q=80&w=1000&auto=format&fit=crop']
+    images: ['https://plus.unsplash.com/premium_photo-1663054309676-bb9d31c56f72?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGFyYWdsaWRpbmd8ZW58MHx8MHx8fDA%3D']
   },
   {
     title: 'The Last Resort Bungee',

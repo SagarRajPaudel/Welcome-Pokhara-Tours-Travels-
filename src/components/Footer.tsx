@@ -2,29 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Facebook, Instagram, Twitter } from 'lucide-react';
 
-const LOGO_PATH = '/logo.png';
-
 export default function Footer() {
   return (
     <footer className="bg-secondary pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-6">
-              <img 
-                src={LOGO_PATH} 
-                alt="Welcome Pokhara Logo" 
-                className="h-16 w-auto object-contain"
-                referrerPolicy="no-referrer"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-                  if (fallback) fallback.style.display = 'flex';
-                }}
-              />
-              <div className="hidden flex-col" style={{ display: 'none' }}>
-                <span className="font-bold text-lg tracking-tight leading-none">WELCOME POKHARA</span>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Tours & Travels</span>
+            <Link to="/" className="flex items-center gap-2 mb-6 text-primary">
+              <div className="flex flex-col">
+                <span className="font-bold text-lg tracking-tight leading-none uppercase">Welcome Pokhara</span>
+                <span className="text-[10px] uppercase tracking-[0.2em] opacity-70">Tours & Travels</span>
               </div>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
