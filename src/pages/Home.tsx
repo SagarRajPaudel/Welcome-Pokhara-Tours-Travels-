@@ -4,38 +4,12 @@ import { ArrowRight, MapPin, Compass, Shield, Users, MessageCircle } from 'lucid
 import { Button } from '@/components/ui/button';
 import TourCard from '@/components/TourCard';
 import { Link } from 'react-router-dom';
+import { FALLBACK_TOURS } from '@/constants/tours';
 
 const WHATSAPP_NUMBER = '+9779856032330';
 
 export default function Home() {
   const [featuredTours, setFeaturedTours] = useState<any[]>([]);
-
-  const fallbackFeatured = [
-    {
-      _id: 't1',
-      title: 'Everest Base Camp (EBC)',
-      description: 'This is the "bucket list" trek for most adventurers. Starting with a thrilling flight to Lukla, the trail winds through the heart of the Khumbu region. You’ll walk through famous Sherpa hubs like Namche Bazaar and visit the spiritual Tengboche Monastery. The journey culminates at the base of the world\'s highest peak, with a sunrise hike to Kala Patthar (5,545m) for the most iconic view of Everest.',
-      duration: '14 Days',
-      category: 'Trek',
-      images: ['https://plus.unsplash.com/premium_photo-1697729996368-5b5c7843113e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXZlcmVzdCUyMGJhc2UlMjBjYW1wJTIwdHJla3xlbnwwfHwwfHx8MA%3D%3D']
-    },
-    {
-      _id: 't2',
-      title: 'Annapurna Circuit',
-      description: 'Widely considered one of the most diverse treks in the world, this route takes you through a massive range of climates and landscapes. You begin in lush, subtropical valleys and climb into the high-altitude, Tibetan-style desert of Mustang. The highlight is crossing the Thorong La Pass at 5,416m, followed by a descent to the sacred temple of Muktinath.',
-      duration: '18 Days',
-      category: 'Trek',
-      images: ['https://images.unsplash.com/photo-1720810828643-3b70f8e4cb2a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YW5uYXB1cm5hJTIwY2lyY3VpdCUyMHRyZWt8ZW58MHx8MHx8fDA%3D']
-    },
-    {
-      _id: 'f1',
-      title: 'Rafting',
-      description: 'Experience the thrill of white water rafting on the Trisuli River. Perfect for beginners and experienced rafters alike, with exciting rapids and beautiful scenery.',
-      duration: '1 Day',
-      category: 'Adventure',
-      images: ['https://images.unsplash.com/photo-1629248564797-8c5ba85da9d3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D']
-    }
-  ];
 
   useEffect(() => {
     fetch('/api/tours')
@@ -44,12 +18,12 @@ export default function Home() {
         if (Array.isArray(data) && data.length > 0) {
           setFeaturedTours(data.slice(0, 3));
         } else {
-          setFeaturedTours(fallbackFeatured);
+          setFeaturedTours(FALLBACK_TOURS.slice(4, 7)); // Show some treks as featured
         }
       })
       .catch(err => {
         console.error('Failed to fetch tours:', err);
-        setFeaturedTours(fallbackFeatured);
+        setFeaturedTours(FALLBACK_TOURS.slice(4, 7));
       });
   }, []);
 
@@ -88,28 +62,50 @@ export default function Home() {
   return (
     <div className="overflow-hidden bg-mountain-gradient">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 relative">
+      <section className="pt-32 pb-16 px-4 relative perspective-1000">
         <div className="absolute inset-0 bg-topographic opacity-[0.03] pointer-events-none"></div>
+        
+        {/* Floating 3D elements */}
+        <motion.div
+          animate={{ 
+            y: [0, -20, 0],
+            rotateZ: [0, 5, 0],
+            rotateX: [0, 10, 0]
+          }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-40 right-[10%] w-32 h-32 bg-primary/5 rounded-full blur-3xl pointer-events-none"
+        />
+        <motion.div
+          animate={{ 
+            y: [0, 20, 0],
+            rotateZ: [0, -5, 0],
+            rotateY: [0, 15, 0]
+          }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-20 left-[5%] w-48 h-48 bg-[#FFF5D1]/20 rounded-full blur-3xl pointer-events-none"
+        />
+
         <div className="container mx-auto relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 items-center bg-white rounded-[32px] p-8 md:p-12 shadow-[0_10px_30px_rgba(192,123,82,0.08)]"
+            initial={{ opacity: 0, rotateX: 45, y: 50, z: -100 }}
+            animate={{ opacity: 1, rotateX: 0, y: 0, z: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 items-center bg-white/70 backdrop-blur-xl rounded-[32px] p-8 md:p-12 shadow-[0_20px_50px_rgba(192,123,82,0.12)] border border-white/50"
+            style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="hero-content">
+            <div className="hero-content" style={{ transform: "translateZ(30px)" }}>
               <motion.p 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, x: -20, z: 20 }}
+                animate={{ opacity: 1, x: 0, z: 0 }}
                 transition={{ delay: 0.3 }}
                 className="text-primary font-bold tracking-[0.2em] uppercase text-base mb-8"
               >
                 Welcome Pokhara Tours & Travels
               </motion.p>
               <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                initial={{ opacity: 0, x: -30, rotateY: -20 }}
+                animate={{ opacity: 1, x: 0, rotateY: 0 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
                 className="text-[42px] md:text-[52px] font-[800] mb-6 leading-[1.1] tracking-[-1.5px] text-[#3A3530]"
               >
                 Himalayan Dreams,<br />Tailored for You.
@@ -151,17 +147,19 @@ export default function Home() {
             </div>
             
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="relative h-[320px] md:h-[400px] rounded-[24px] overflow-hidden shadow-lg"
+              initial={{ opacity: 0, scale: 0.9, rotateX: 15, z: -50 }}
+              animate={{ opacity: 1, scale: 1, rotateX: 0, z: 0 }}
+              transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
+              className="relative h-[320px] md:h-[400px] rounded-[24px] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.15)] group"
+              style={{ transformStyle: "preserve-3d" }}
             >
               <img
                 src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1000&auto=format&fit=crop"
                 alt="Nepal Mountains"
-                className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-110"
+                className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-125"
                 referrerPolicy="no-referrer"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
             </motion.div>
           </motion.div>
         </div>
@@ -192,18 +190,27 @@ export default function Home() {
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                whileHover={{ y: -10 }}
-                className="p-8 rounded-3xl bg-[#FFF5D1]/40 hover:bg-[#FFF5D1]/60 transition-colors text-center cursor-default border-glow"
+                whileHover={{ 
+                  y: -15,
+                  rotateY: 10,
+                  rotateX: -5,
+                  z: 20
+                }}
+                className="p-8 rounded-3xl bg-[#FFF5D1]/40 hover:bg-[#FFF5D1]/60 transition-all text-center cursor-default border-glow shadow-sm hover:shadow-xl"
+                style={{ transformStyle: "preserve-3d" }}
               >
                 <motion.div 
-                  whileHover={{ rotate: 360 }}
+                  whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.6 }}
-                  className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm"
+                  className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-md"
+                  style={{ transform: "translateZ(30px)" }}
                 >
                   {service.icon}
                 </motion.div>
-                <h3 className="text-xl font-bold mb-4">{service.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{service.desc}</p>
+                <div style={{ transform: "translateZ(15px)" }}>
+                  <h3 className="text-xl font-bold mb-4">{service.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{service.desc}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -273,27 +280,69 @@ export default function Home() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {[
-              { name: "Sarah Johnson", country: "Australia", text: "The Annapurna Base Camp trek was life-changing. Our guide was incredible and the organization was flawless. Highly recommend!" },
-              { name: "Markus Weber", country: "Germany", text: "Pokhara is beautiful, but Welcome Pokhara made it magical. The city tour and paragliding were perfectly arranged." },
-              { name: "Anjali Gupta", country: "India", text: "Professional, friendly, and very helpful. They customized our family trip perfectly. We felt safe and well-cared for." }
+              { 
+                name: "Bikalpa Bastola", 
+                text: "It was a wonderful journey to ABC(annapurna base camp) trek. We saw wonderful views from the base and during the journey. Highly recommend everyone to go on this trek once in their lifetime.", 
+                time: "6 months ago" 
+              },
+              { 
+                name: "M M", 
+                text: "Rabindra & wife Sorba sorted all my transport up to Muktinath & KTM with total professionalism and a personal touch. Great people dedicated to serving you .. highly recommended!", 
+                time: "5 months ago" 
+              },
+              { 
+                name: "Olivier Naafs", 
+                text: "We did a 10 day trek to Ice Lake and Thorong La pass. Everything was taken care of, and especially our guide, Kali, was stellar. Very experienced, kind and helpful.", 
+                time: "6 months ago" 
+              },
+              { 
+                name: "Nick Lenzer", 
+                text: "Rabin was so helpful. These guys are great. Good laundry service, can help with cars, flights, anything you need. True legends of Pokhara! Super nice guys.", 
+                time: "4 months ago" 
+              },
+              { 
+                name: "Mohammad Azizeddin", 
+                text: "It was a very good trip with excellent planning. I highly recommend choosing this agency for your trip to Nepal — they will help you create wonderful memories.", 
+                time: "4 months ago" 
+              },
+              { 
+                name: "Alapon Banerjee", 
+                text: "Perfect Professional Tour operator. No unwanted talkings and fake assurance. Extremely helpful and consider only the best for tourist and their need. Budget friendly and dependable.", 
+                time: "3 months ago" 
+              },
+              { 
+                name: "John Duvier", 
+                text: "We had an exciting and smooth heli tour from Pokhara to Annapurna BC. All carefully and professionally handled by the agency. Regards Tatiana and John.", 
+                time: "6 months ago" 
+              },
+              { 
+                name: "Gabriela Zaniboni", 
+                text: "The owner, Rabindra, has been very kind and solved a very important problem with our flight. Thanks a lot Rabindra! No doubt to hire him for your tours and travels!", 
+                time: "11 months ago" 
+              },
+              { 
+                name: "Kristian Strecker", 
+                text: "We booked a rafting tour and a trip to Chitwan... Thank you... everything was fine!", 
+                time: "3 months ago" 
+              }
             ].map((t, i) => (
               <motion.div 
                 key={i} 
                 variants={itemVariants}
                 whileHover={{ scale: 1.02 }}
-                className="p-8 rounded-3xl bg-secondary/20 border border-secondary/50 transition-shadow hover:shadow-lg"
+                className="p-8 rounded-3xl bg-secondary/20 border border-secondary/50 transition-shadow hover:shadow-lg flex flex-col h-full"
               >
                 <div className="flex gap-1 mb-4">
                   {[1, 2, 3, 4, 5].map(s => <span key={s} className="text-yellow-500 text-lg">★</span>)}
                 </div>
-                <p className="italic text-muted-foreground mb-6">"{t.text}"</p>
+                <p className="italic text-muted-foreground mb-6 flex-grow">"{t.text}"</p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">
+                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary shrink-0">
                     {t.name[0]}
                   </div>
                   <div>
                     <p className="font-bold text-sm">{t.name}</p>
-                    <p className="text-xs text-muted-foreground">{t.country}</p>
+                    <p className="text-xs text-muted-foreground">{t.time}</p>
                   </div>
                 </div>
               </motion.div>

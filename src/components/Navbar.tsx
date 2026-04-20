@@ -66,24 +66,55 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full bg-white shadow-xl md:hidden py-6 px-4 flex flex-col gap-4"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed inset-0 bg-white z-[60] md:hidden flex flex-col"
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
+            <div className="p-6 flex justify-between items-center bg-white border-b border-secondary/50">
+              <span className="font-extrabold text-lg text-primary">Explore Pokhara</span>
+              <button 
                 onClick={() => setIsOpen(false)}
-                className={`text-lg font-medium ${location.pathname === link.path ? 'text-primary' : 'text-foreground'}`}
+                className="w-12 h-12 rounded-full bg-secondary/50 flex items-center justify-center text-foreground"
               >
-                {link.name}
-              </Link>
-            ))}
-            <Button className="w-full rounded-xl" asChild>
-              <Link to="/contact" onClick={() => setIsOpen(false)}>Plan Your Trip</Link>
-            </Button>
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="flex-grow flex flex-col justify-end p-8 gap-4 pb-20">
+              <div className="space-y-2 mb-8">
+                <p className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground mb-4">Main Menu</p>
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`flex items-center justify-between w-full p-4 rounded-2xl text-xl font-bold transition-all ${
+                      location.pathname === link.path 
+                      ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-105' 
+                      : 'bg-secondary/30 text-foreground active:bg-secondary/50'
+                    }`}
+                  >
+                    {link.name}
+                    {location.pathname === link.path && <div className="w-2 h-2 rounded-full bg-white"></div>}
+                  </Link>
+                ))}
+              </div>
+              
+              <Button 
+                className="w-full h-16 rounded-2xl text-lg font-bold bg-[#3A3530] text-white hover:bg-black active:scale-95 transition-transform" 
+                asChild
+              >
+                <Link to="/contact" onClick={() => setIsOpen(false)}>Plan Your Trip</Link>
+              </Button>
+            </div>
+            
+            <div className="p-8 pt-0 flex justify-center gap-6 text-muted-foreground opacity-60">
+              <span className="text-xs font-bold">Safe Travels</span>
+              <span className="text-xs font-bold">•</span>
+              <span className="text-xs font-bold">24/7 Support</span>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

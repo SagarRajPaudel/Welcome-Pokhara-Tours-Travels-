@@ -6,8 +6,8 @@ export default function Footer() {
   return (
     <footer className="bg-secondary pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          <div className="col-span-1 md:col-span-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-6 text-primary">
               <div className="flex flex-col">
                 <span className="font-bold text-lg tracking-tight leading-none uppercase">Welcome Pokhara</span>
@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-6">Quick Links</h4>
+            <h4 className="font-bold text-base mb-6 uppercase tracking-wider">Quick Links</h4>
             <ul className="space-y-4">
               <li><Link to="/" className="text-muted-foreground hover:text-primary transition-colors text-sm">Home</Link></li>
               <li><Link to="/tours" className="text-muted-foreground hover:text-primary transition-colors text-sm">Our Tours</Link></li>
@@ -41,17 +41,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-6">Our Services</h4>
-            <ul className="space-y-4">
-              <li><span className="text-muted-foreground text-sm">Trekking & Hiking</span></li>
-              <li><span className="text-muted-foreground text-sm">City Tours</span></li>
-              <li><span className="text-muted-foreground text-sm">Adventure Sports</span></li>
-              <li><span className="text-muted-foreground text-sm">Hotel Booking</span></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-bold text-lg mb-6">Contact Info</h4>
+            <h4 className="font-bold text-base mb-6 uppercase tracking-wider">Contact Info</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="text-primary shrink-0" size={18} />
@@ -66,6 +56,48 @@ export default function Footer() {
                 <span className="text-muted-foreground text-sm">info@welcomepokhara.com</span>
               </li>
             </ul>
+          </div>
+
+          <div>
+            <h4 className="font-bold text-base mb-6 uppercase tracking-wider">Compliance</h4>
+            <ul className="space-y-4">
+              <li>
+                <span className="text-[10px] uppercase font-bold text-primary block mb-1">Dpt. of Tourism</span>
+                <span className="text-muted-foreground text-sm">Lic No: 1234/075/076</span>
+              </li>
+              <li>
+                <span className="text-[10px] uppercase font-bold text-primary block mb-1">PAN / VAT</span>
+                <span className="text-muted-foreground text-sm">No: 606789123</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-bold text-base mb-6 uppercase tracking-wider">Accreditations</h4>
+            <div className="flex flex-wrap gap-4">
+              <div className="w-12 h-12 bg-white rounded-lg p-1 shadow-sm border border-border/50 flex items-center justify-center overflow-hidden">
+                <img 
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4Rv8Ow_cRUSp6xRab-m4cJX6rhoEdHl6Ftw&s" 
+                  alt="TAAN Member" 
+                  className="w-full h-full object-contain"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = "https://picsum.photos/seed/taan/50/50";
+                  }}
+                />
+              </div>
+              <div className="w-12 h-12 bg-white rounded-lg p-1 shadow-sm border border-border/50 flex items-center justify-center overflow-hidden">
+                <img 
+                  src="https://enlokaantar.prixacdn.net/media/gallery_folder/NMA-Nepal-Mountaineering-Association_XVHh7XzebH.png" 
+                  alt="NMA Member" 
+                  className="w-full h-full object-contain"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = "https://picsum.photos/seed/nma/50/50";
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </div>
         
